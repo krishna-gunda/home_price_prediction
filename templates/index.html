@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Krishna House Price Prediction Project</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        .top-section {
+            margin-top: 30px;
+        }
+
+        .profile-pic {
+            width: 120px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 2px solid #333;
+        }
+
+        h1 {
+            margin-top: 15px;
+            font-size: 26px;
+            text-transform: capitalize;
+        }
+
+        .container {
+            width: 85%;
+            max-width: 900px;
+            margin: 30px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px 25px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        input {
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .btn-container {
+            grid-column: span 2;
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        button {
+            padding: 10px 25px;
+            font-size: 15px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: green;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="top-section">
+    <img src="{{ url_for('static', filename='profile.jpg') }}" class="profile-pic">
+    <h1>krishna house price prediction project</h1>
+</div>
+
+<div class="container">
+
+<form action="/predict" method="post">
+
+    <div class="input-group">
+        <label>Bedrooms</label>
+        <input type="number" name="bedrooms" required>
+    </div>
+
+    <div class="input-group">
+        <label>Bathrooms</label>
+        <input type="number" name="bathrooms" required>
+    </div>
+
+    <div class="input-group">
+        <label>Sqft Living</label>
+        <input type="number" name="sqft_living" required>
+    </div>
+
+    <div class="input-group">
+        <label>Sqft Lot</label>
+        <input type="number" name="sqft_lot" required>
+    </div>
+
+    <div class="input-group">
+        <label>Floors</label>
+        <input type="number" name="floors" required>
+    </div>
+
+    <div class="input-group">
+        <label>Waterfront (0/1)</label>
+        <input type="number" name="waterfront" required>
+    </div>
+
+    <div class="input-group">
+        <label>View</label>
+        <input type="number" name="view" required>
+    </div>
+
+    <div class="input-group">
+        <label>Condition</label>
+        <input type="number" name="condition" required>
+    </div>
+
+    <div class="input-group">
+        <label>Sqft Above</label>
+        <input type="number" name="sqft_above" required>
+    </div>
+
+    <div class="input-group">
+        <label>Sqft Basement</label>
+        <input type="number" name="sqft_basement" required>
+    </div>
+
+    <div class="input-group">
+        <label>Year Built</label>
+        <input type="number" name="yr_built" required>
+    </div>
+
+    <div class="input-group">
+        <label>Year Renovated</label>
+        <input type="number" name="yr_renovated" required>
+    </div>
+
+    <div class="input-group">
+        <label>City</label>
+        <input type="text" name="city" required>
+    </div>
+
+    <div class="input-group">
+        <label>Country</label>
+        <input type="text" name="country" required>
+    </div>
+
+    <div class="input-group">
+        <label>Year</label>
+        <input type="number" name="year" required>
+    </div>
+
+    <div class="input-group">
+        <label>Month</label>
+        <input type="number" name="month" required>
+    </div>
+
+    <div class="input-group">
+        <label>Day</label>
+        <input type="number" name="day" required>
+    </div>
+
+    <div class="btn-container">
+        <button type="submit">Predict Price</button>
+    </div>
+
+</form>
+
+{% if prediction_text %}
+    <div class="result">
+        {{ prediction_text }}
+    </div>
+{% endif %}
+
+</div>
+
+</body>
+</html>
